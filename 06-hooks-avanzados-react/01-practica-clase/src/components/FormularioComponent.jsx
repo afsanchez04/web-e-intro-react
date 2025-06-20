@@ -1,6 +1,10 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export const FormularioComponent = () => {
+
+    const focusRef = useRef()
+
+    console.log(focusRef)
 
     const [formData, setFormData] = useState({
         userName: "",
@@ -25,6 +29,13 @@ export const FormularioComponent = () => {
         console.log(formData)
     }
 
+    useEffect(() => {
+        focusRef.current.focus()
+    }, [])
+
+    console.log("Componente renderizado")
+    
+
     return (
         <form onSubmit={ onSubmit }>
             <div className="mb-3">
@@ -40,6 +51,7 @@ export const FormularioComponent = () => {
             <div className="mb-3">
                 <label htmlFor="userEmail" className="form-label">Email address</label>
                 <input
+                ref={focusRef}
                     type="email"
                     className="form-control"
                     name="userEmail"
