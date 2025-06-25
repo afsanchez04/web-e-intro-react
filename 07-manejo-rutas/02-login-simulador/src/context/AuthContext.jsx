@@ -1,7 +1,7 @@
 //1. Crear el contexto
-import { useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
-const AuthContext = useContext()
+const AuthContext = createContext()
 
 //3. Hook personalizado
 export function useAuth() {
